@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("management/v1/students")
+@RequestMapping("management/api/v1/students")
 public class StudentManagementController {
     
     private static final List<Student> STUDENTS = Arrays.asList(
@@ -23,8 +23,8 @@ public class StudentManagementController {
 		new Student(2, "Maria Jones"),
 		new Student(3, "Anna Smith")
 	);
-	
-	@GetMapping(path = "{studentId}")
+
+	@GetMapping
 	public List<Student> getAllStudent(){
 		return STUDENTS;
 	}
@@ -41,6 +41,6 @@ public class StudentManagementController {
 
     @PutMapping(path = "{studentId}")
     public void updateStudent(@PathVariable("studentId")Integer studentId, @RequestBody Student student){
-        System.out.println(String.format("%S %s", student, student));
+        System.out.println(String.format("%S %s", studentId, student));
     }
 }
